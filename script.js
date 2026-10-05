@@ -1,77 +1,26 @@
-const SUPABASE_URL = "COLE_AQUI_A_URL_DO_SEU_PROJETO";
-const SUPABASE_KEY = "COLE_AQUI_SUA_CHAVE_SB_PUBLISHABLE";
+// Cole aqui a Project URL e a chave sb_publishable_ do Supabase.
+// NUNCA coloque a sb_secret_ neste arquivo.
+const SUPABASE_URL="COLE_AQUI_A_PROJECT_URL";
+const SUPABASE_KEY="COLE_AQUI_A_SB_PUBLISHABLE_KEY";
 
-const scriptSupabase = document.createElement("script");
-scriptSupabase.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+const s=document.createElement("script");
+s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+s.onload=()=>{const {createClient}=window.supabase;const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);carregarProjetos(supabase);configurarContato(supabase)};
+document.head.appendChild(s);
 
-scriptSupabase.onload = () => {
-    const { createClient } = window.supabase;
-    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-    carregarProjetos(supabase);
-    configurarFormulario(supabase);
-};
-
-document.head.appendChild(scriptSupabase);
-
-async function carregarProjetos(supabase) {
-    const container = document.getElementById("lista-projetos");
-    try {
-        const { data, error } = await supabase
-            .from("projetos")
-            .select("*")
-            .order("id", { ascending: false });
-
-        if (error) throw error;
-
-        if (!data || data.length === 0) {
-            container.innerHTML = "<p class='carregando'>Nenhum projeto cadastrado ainda.</p>";
-            return;
-        }
-
-        container.innerHTML = "";
-        data.forEach(projeto => {
-            const card = document.createElement("article");
-            card.className = "projeto";
-            card.innerHTML = `
-                ${projeto.imagem ? `<img src="${projeto.imagem}" alt="${projeto.titulo || "Projeto"}">` : ""}
-                <div class="projeto-conteudo">
-                    <h3>${projeto.titulo || "Projeto"}</h3>
-                    <p>${projeto.descricao || ""}</p>
-                    ${projeto.link ? `<a href="${projeto.link}" target="_blank" rel="noopener noreferrer" class="projeto-link">Ver projeto →</a>` : ""}
-                </div>`;
-            container.appendChild(card);
-        });
-    } catch (error) {
-        console.error(error);
-        container.innerHTML = "<p class='carregando'>Não foi possível carregar os projetos.</p>";
-    }
+async function carregarProjetos(supabase){
+ const lista=document.getElementById("lista-projetos");
+ const {data,error}=await supabase.from("projetos").select("*").order("id",{ascending:false});
+ if(error){console.error(error);lista.innerHTML="<p>Erro ao conectar aos projetos.</p>";return}
+ if(!data.length){lista.innerHTML="<p>Nenhum projeto cadastrado ainda.</p>";return}
+ lista.innerHTML=data.map(p=>`<article class="projeto">${p.imagem?`<img src="${p.imagem}" alt="${p.titulo}">`:""}<h3>${p.titulo}</h3><p>${p.descricao||""}</p>${p.link?`<a href="${p.link}" target="_blank" rel="noopener">Ver projeto →</a>`:""}</article>`).join("");
 }
 
-function configurarFormulario(supabase) {
-    const formulario = document.getElementById("form-contato");
-    const mensagem = document.getElementById("mensagem-form");
-
-    formulario.addEventListener("submit", async event => {
-        event.preventDefault();
-
-        const nome = document.getElementById("nome").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const texto = document.getElementById("mensagem").value.trim();
-
-        mensagem.textContent = "Enviando...";
-
-        try {
-            const { error } = await supabase.from("contatos").insert([
-                { nome, email, mensagem: texto }
-            ]);
-
-            if (error) throw error;
-
-            mensagem.textContent = "Mensagem enviada com sucesso!";
-            formulario.reset();
-        } catch (error) {
-            console.error(error);
-            mensagem.textContent = "Erro ao enviar a mensagem. Tente novamente.";
-        }
-    });
+function configurarContato(supabase){
+ document.getElementById("form-contato").addEventListener("submit",async e=>{
+  e.preventDefault();const status=document.getElementById("mensagem-form");status.textContent="Enviando...";
+  const {error}=await supabase.from("contatos").insert({nome:nome.value.trim(),email:email.value.trim(),mensagem:mensagem.value.trim()});
+  if(error){console.error(error);status.textContent="Erro ao enviar.";return}
+  status.textContent="Mensagem enviada com sucesso!";e.target.reset();
+ });
 }
