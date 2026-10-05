@@ -1,98 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio pessoal com projetos, estudos e contato.">
-    <title>Portfólio | Lavinia</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Portfólio | Lavinia</title><link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-    <nav class="navbar">
-        <a href="#inicio" class="logo">Lavinia<span>.</span></a>
-        <ul class="menu">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre">Quem sou eu</a></li>
-            <li class="dropdown">
-                <a href="#estudos">Estudos ▾</a>
-                <ul class="submenu">
-                    <li><a href="#seo">SEO</a></li>
-                    <li><a href="#geo">GEO</a></li>
-                    <li><a href="#semantica">Semântica</a></li>
-                </ul>
-            </li>
-            <li><a href="#projetos">Portfólio</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-        <a href="login.html" class="cadeado" title="Área administrativa">🔒</a>
-    </nav>
-</header>
-
+<header><nav class="navbar">
+<a class="logo" href="index.html">Lavinia<span>.</span></a>
+<ul class="menu"><li><a href="#inicio">Início</a></li><li><a href="#sobre">Quem sou eu</a></li><li><a href="#estudos">Estudos</a></li><li><a href="#projetos">Portfólio</a></li><li><a href="#contato">Contato</a></li></ul>
+<a class="cadeado" href="login.html">🔒</a>
+</nav></header>
 <main>
-<section id="inicio" class="hero">
-    <div class="hero-text">
-        <p class="destaque">Olá, eu sou</p>
-        <h1>Lavinia <span>Desenvolvedora Web</span></h1>
-        <p>Bem-vindo ao meu portfólio! Aqui você pode conhecer meus estudos, projetos e trabalhos desenvolvidos durante o curso.</p>
-        <div class="botoes">
-            <a href="#projetos" class="botao">Ver projetos</a>
-            <a href="#contato" class="botao secundario">Entre em contato</a>
-        </div>
-    </div>
-    <div class="hero-card">
-        <div class="codigo">
-            <span>&lt;portfolio&gt;</span>
-            <p>HTML</p><p>CSS</p><p>JavaScript</p><p>Supabase</p>
-            <span>&lt;/portfolio&gt;</span>
-        </div>
-    </div>
-</section>
-
-<section id="sobre" class="section">
-    <div class="titulo"><p>Conheça um pouco</p><h2>Quem sou eu</h2></div>
-    <div class="sobre">
-        <div class="sobre-texto">
-            <p>Sou estudante e estou aprendendo desenvolvimento web, criação de sites, SEO, GEO, semântica e banco de dados.</p>
-            <p>Este portfólio foi desenvolvido para apresentar meus conhecimentos e projetos realizados durante o curso.</p>
-        </div>
-        <div class="sobre-card">
-            <h3>Minhas habilidades</h3>
-            <div class="habilidades">
-                <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                <span>SEO</span><span>GEO</span><span>Supabase</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="estudos" class="section">
-    <div class="titulo"><p>O que estou aprendendo</p><h2>Estudos</h2></div>
-    <div class="cards-estudos">
-        <article id="seo" class="estudo-card"><div class="icone">🔎</div><h3>SEO</h3><p>Técnicas para melhorar a presença de sites nos mecanismos de busca.</p></article>
-        <article id="geo" class="estudo-card"><div class="icone">🌎</div><h3>GEO</h3><p>Estratégias para melhorar a presença de conteúdos nas buscas com inteligência artificial.</p></article>
-        <article id="semantica" class="estudo-card"><div class="icone">💻</div><h3>Semântica</h3><p>Uso correto das estruturas HTML para criar páginas organizadas e acessíveis.</p></article>
-    </div>
-</section>
-
-<section id="projetos" class="section">
-    <div class="titulo"><p>Meus trabalhos</p><h2>Projetos</h2></div>
-    <div id="lista-projetos" class="projetos-grid"><p class="carregando">Carregando projetos...</p></div>
-</section>
-
-<section id="contato" class="section contato-section">
-    <div class="titulo"><p>Vamos conversar?</p><h2>Entre em contato</h2></div>
-    <form id="form-contato" class="formulario">
-        <div class="campo"><label for="nome">Nome</label><input type="text" id="nome" required></div>
-        <div class="campo"><label for="email">E-mail</label><input type="email" id="email" required></div>
-        <div class="campo"><label for="mensagem">Mensagem</label><textarea id="mensagem" rows="6" required></textarea></div>
-        <button type="submit" class="botao">Enviar mensagem</button>
-        <p id="mensagem-form"></p>
-    </form>
-</section>
-</main>
-
-<footer><p>© 2026 · Feito por <a href="#inicio">@Lavinia</a></p></footer>
-<script src="script.js"></script>
-</body>
-</html>
+<section id="inicio" class="hero"><div><p class="destaque">Olá, eu sou</p><h1>Lavinia <span>Desenvolvedora Web</span></h1><p>Este é meu portfólio profissional, com meus estudos e projetos.</p><a class="botao" href="#projetos">Ver projetos</a></div></section>
+<section id="sobre" class="section"><div class="titulo"><p>Conheça um pouco</p><h2>Quem sou eu</h2></div><p>Sou estudante e estou aprendendo desenvolvimento web, SEO, GEO, semântica e banco de dados.</p></section>
+<section id="estudos" class="section"><div class="titulo"><p>O que estou aprendendo</p><h2>Estudos</h2></div><div class="cards"><article><h3>SEO</h3><p>Estratégias para melhorar a presença de sites nos mecanismos de busca.</p></article><article><h3>GEO</h3><p>Estratégias para conteúdos encontrados por sistemas de inteligência artificial.</p></article><article><h3>Semântica</h3><p>Estrutura HTML organizada, acessível e significativa.</p></article></div></section>
+<section id="projetos" class="section"><div class="titulo"><p>Meus trabalhos</p><h2>Projetos</h2></div><div id="lista-projetos" class="cards"><p>Carregando projetos...</p></div></section>
+<section id="contato" class="section contato"><div class="titulo"><p>Vamos conversar?</p><h2>Contato</h2></div><form id="form-contato"><input id="nome" type="text" placeholder="Seu nome" required><input id="email" type="email" placeholder="Seu e-mail" required><textarea id="mensagem" placeholder="Sua mensagem" required></textarea><button class="botao">Enviar</button><p id="mensagem-form"></p></form></section>
+</main><footer>© 2026 · Feito por <a href="#inicio">@Lavinia</a></footer><script src="js/script.js"></script>
+</body></html>
